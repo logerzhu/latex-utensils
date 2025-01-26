@@ -275,13 +275,13 @@ commentenv
 // inline math $...$
 InlineMathShift
   = mathShift
-     skip_space eq:(!mathShift t:MathElement skip_space {return t;})+
+     skip_space eq:(!mathShift .)+
     mathShift
   {
     return { kind: "inlineMath", content: eq, location: location() };
   }
   / mathShift
-     whitespace eq:(!mathShift t:MathElement skip_space {return t;})*
+     whitespace eq:(!mathShift .)*
     mathShift
   {
     return { kind: "inlineMath", content: eq, location: location() };
